@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Bastien DRONNEAU
+  description: Traefik custom installation
+  company: Bast Factory
+  issue_tracker_url: http://example.com/issue/tracker
+  license: MIT
+
+  min_ansible_version: 2.4
+  galaxy_tags:
+    - traefik
+    - debian
+    - reverse
+
+dependencies: []

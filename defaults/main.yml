@@ -1,0 +1,12 @@
+---
+btraefik_user: "traefik"
+btraefik_group: "traefik"
+btraefik_alternate_groups: ""
+
+btraefik_version: "1.5.2"
+btraefik_binary_url: "https://github.com/containous/traefik/releases/download/v{{ btraefik_version }}/traefik_linux-amd64"
+
+btraefik_systemd_env_vars: []
+btraefik_systemd_exec_start: "/usr/bin/traefik --configFile=/etc/traefik/config.toml"
+
+btraefik_acme_email: ""

@@ -1,0 +1,16 @@
+---
+
+- name: "enable systemd unit"
+  become: true
+  systemd:
+    name: traefik
+    enabled: 'yes'
+    masked: 'no'
+    daemon_reload: 'yes'
+
+- name: "restart systemd unit"
+  become: true
+  systemd:
+    state: "restarted"
+    name: "traefik"
+    daemon_reload: 'yes'

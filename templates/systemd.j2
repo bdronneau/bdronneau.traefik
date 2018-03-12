@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+# This unit file is based on traefik github repository
+# @see https://raw.githubusercontent.com/containous/traefik/master/contrib/systemd/traefik.service
+[Unit]
+Description=Traefik
+
+[Service]
+User={{ btraefik_user }}
+Group={{ btraefik_group }}
+{% for env in btraefik_systemd_env_vars %}
+Environment={{ env }}
+{% endfor %}
+Type=notify
+ExecStart=/usr/bin/traefik --configFile=/etc/traefik/conf.toml
+Restart=on-failure
+
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
