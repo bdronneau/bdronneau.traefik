@@ -10,7 +10,6 @@ Group={{ btraefik_group }}
 {% for env in btraefik_systemd_env_vars %}
 Environment={{ env }}
 {% endfor %}
-Type=notify
 ExecStart=/usr/bin/traefik --configFile=/etc/traefik/conf.toml
 Restart=on-failure
 
