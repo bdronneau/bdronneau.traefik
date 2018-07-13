@@ -51,7 +51,7 @@
 - name: Create configuration
   become: true
   template:
-    src: traefik.toml.j2
+    src: "{{ btraefik_conf_template }}"
     dest: "/etc/traefik/conf.toml"
     owner: "{{ btraefik_user }}"
     group: "{{ btraefik_group }}"

@@ -10,3 +10,5 @@ btraefik_systemd_env_vars: []
 btraefik_systemd_exec_start: "/usr/bin/traefik --configFile=/etc/traefik/config.toml"
 
 btraefik_acme_email: ""
+
+btraefik_conf_template: "traefik.toml.j2"
