@@ -48,7 +48,6 @@
     state: present
   become: true
 
-# Traefik hot reload configuration file so no need to reload
 - name: Create configuration
   become: true
   template:
