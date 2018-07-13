@@ -66,3 +66,9 @@
   notify:
     - enable systemd unit
     - restart systemd unit
+
+- name: Make sure traefik service is started and enabled
+  systemd:
+    state: "started"
+    name: "traefik"
+    enabled: yes
