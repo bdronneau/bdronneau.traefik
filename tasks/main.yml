@@ -57,6 +57,8 @@
     owner: "{{ btraefik_user }}"
     group: "{{ btraefik_group }}"
     mode: 0644
+  notify:
+    - restart traefik systemd unit
 
 - name: Create systemd unit
   become: true
