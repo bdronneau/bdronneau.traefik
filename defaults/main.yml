@@ -13,6 +13,10 @@ btraefik_acme_email: ""
 
 btraefik_conf_template: "traefik.toml.j2"
 btraefik_conf_extra_templates: []
+# btraefik_conf_extra_templates:
+#   -
+#     source: "path/to/file/source"
+#     dest: "path/to/destination/file"
 
 btraefik_directory: "/etc/traefik"
 btraefik_direction_binary: "{{ btraefik_directory }}"
