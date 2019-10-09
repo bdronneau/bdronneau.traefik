@@ -1,60 +1,22 @@
 # {{ ansible_managed }}
-################################################################
-# Global configuration
-################################################################
-
-# Enable debug mode
-#
-# Optional
-# Default: false
-#
-# debug = true
-logLevel = "WARNING"
-
-defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
   [entryPoints.http]
   address = ":80"
-    [entryPoints.http.redirect]
-      entryPoint = "https"
-      regex = "^http://localhost/(.*)"
-      replacement = "https://bastien.dronneau.fr/"
+
   [entryPoints.https]
   address = ":443"
-    [entryPoints.https.tls]
 
-################################################################
-# ACME configuration (let's encrypt)
-################################################################
+[certificatesResolvers]
+  [certificatesResolvers.default.acme]
+    email = "{{ btraefik_acme_email }}"
+    storage = "/etc/traefik/acme/acme.json"
 
-[acme]
+    [certificatesResolvers.default.acme.dnsChallenge]
+      provider = "cloudflare"
 
-email = "{{ btraefik_acme_email }}"
-storage = "/etc/traefik/acme/acme.json"
-entryPoint = "https"
+[log]
+  level = "WARN"
 
-[acme.dnsChallenge]
-  provider = "cloudflare"
-
-[[acme.domains]]
-  main = "bastien.dronneau.fr"
-
-################################################################
-# API configuration
-################################################################
-
-[api]
-  entryPoint = "traefik"
-  dashboard = true
-  debug = false
-
-################################################################
-# Docker configuration backend
-################################################################
-[docker]
-
-endpoint = "unix:///var/run/docker.sock"
-domain = "docker.walter"
-watch = true
-exposedbydefault = false
+[metrics]
+  [metrics.prometheus]

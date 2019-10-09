@@ -3,7 +3,7 @@ btraefik_user: "traefik"
 btraefik_group: "traefik"
 btraefik_alternate_groups: ""
 
-btraefik_version: "1.5.2"
+btraefik_version: "2.0.1"
 btraefik_binary_url: "https://github.com/containous/traefik/releases/download/v{{ btraefik_version }}/traefik_linux-amd64"
 
 btraefik_systemd_env_vars: []
@@ -12,3 +12,12 @@ btraefik_systemd_exec_start: "/usr/bin/traefik --configFile=/etc/traefik/config.
 btraefik_acme_email: ""
 
 btraefik_conf_template: "traefik.toml.j2"
+btraefik_conf_extra_templates: []
+# btraefik_conf_extra_templates:
+#   -
+#     source: "path/to/file/source"
+#     dest: "path/to/destination/file"
+
+btraefik_directory: "/etc/traefik"
+btraefik_direction_binary: "{{ btraefik_directory }}"
+btraefik_download_name: "traefik_v{{ btraefik_version }}_{{ ansible_system | lower }}_{{ 'amd64' if ansible_architecture == 'x86_64' else ansible_architecture[:-1] if ansible_architecture.startswith('armv') else 'arm64' if ansible_architecture == 'aarch64' else ansible_architecture }}"
