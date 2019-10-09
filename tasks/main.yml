@@ -5,6 +5,7 @@
     name: libcap2-bin
     state: present
     update_cache: "yes"
+    force_apt_get: yes
 
 - name: "Create app group"
   become: true
