@@ -1,3 +1,4 @@
+---
 name: Ansible role
 
 on: [push, pull_request]
