@@ -4,7 +4,7 @@
   ansible.builtin.apt:
     name: libcap2-bin
     state: present
-    update_cache: "yes"
+    update_cache: yes
     force_apt_get: yes
 
 - name: "Create app group"
@@ -19,7 +19,7 @@
     name: "{{ btraefik_user }}"
     groups: "{{ btraefik_alternate_groups }}"
     group: "{{ btraefik_group }}"
-    append: 'yes'
+    append: yes
 
 - name: "Create basics directories"
   become: true

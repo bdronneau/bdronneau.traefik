@@ -4,13 +4,13 @@
   become: true
   ansible.builtin.systemd:
     name: traefik
-    enabled: 'yes'
+    enabled: yes
     masked: 'no'
-    daemon_reload: 'yes'
+    daemon_reload: yes
 
 - name: "restart traefik systemd unit"
   become: true
   ansible.builtin.systemd:
     state: "restarted"
     name: "traefik"
-    daemon_reload: 'yes'
+    daemon_reload: yes
