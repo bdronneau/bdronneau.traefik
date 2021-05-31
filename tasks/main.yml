@@ -89,7 +89,7 @@
   notify:
     - restart traefik systemd unit
 
-- name: Create configuration
+- name: Create extra configuration
   become: true
   ansible.builtin.template:
     src: "{{ item.source }}"
