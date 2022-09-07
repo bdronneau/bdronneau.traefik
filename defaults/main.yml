@@ -3,7 +3,7 @@ btraefik_user: "traefik"
 btraefik_group: "traefik"
 btraefik_alternate_groups: ""
 
-btraefik_version: "2.0.1"
+btraefik_version: "2.8.4"
 btraefik_binary_url: "https://github.com/containous/traefik/releases/download/v{{ btraefik_version }}/traefik_linux-amd64"
 
 btraefik_systemd_env_vars: []
