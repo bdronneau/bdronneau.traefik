@@ -4,6 +4,9 @@
 [Unit]
 Description=Traefik open-source Edge Router
 Documentation=https://doc.traefik.io/traefik/
+#After=network-online.target
+AssertFileIsExecutable=/usr/bin/traefik
+AssertPathExists=/etc/traefik/conf.toml
 
 [Service]
 User={{ btraefik_user }}
@@ -11,11 +14,34 @@ Group={{ btraefik_group }}
 {% for env in btraefik_systemd_env_vars %}
 Environment={{ env }}
 {% endfor %}
-ExecStart=/usr/bin/traefik --configFile=/etc/traefik/conf.toml
-Restart=on-failure
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
-StandardOutput=syslog
-StandardError=syslog
+# configure service behavior
+Type=notify
+ExecStart=/usr/bin/traefik --configFile=/etc/traefik/conf.toml
+Restart=always
+WatchdogSec=1s
+
+# lock down system access
+# prohibit any operating system and configuration modification
+#ProtectSystem=strict
+# create separate, new (and empty) /tmp and /var/tmp filesystems
+#PrivateTmp=true
+# make /home directories inaccessible
+#ProtectHome=true
+# turns off access to physical devices (/dev/...)
+#PrivateDevices=true
+# make kernel settings (procfs and sysfs) read-only
+#ProtectKernelTunables=true
+# make cgroups /sys/fs/cgroup read-only
+#ProtectControlGroups=true
+
+# allow writing of acme.json
+#ReadWritePaths=/etc/traefik/acme.json
+# depending on log and entrypoint configuration, you may need to allow writing to other paths, too
+
+# limit number of processes in this unit
+#LimitNPROC=1
 
 [Install]
 WantedBy=multi-user.target

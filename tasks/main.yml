@@ -59,13 +59,6 @@
         group: "{{ btraefik_group }}"
         mode: u+x
 
-    - name: Add capabilities on traefik for 80 listening
-      community.general.capabilities:
-        path: "{{ btraefik_direction_binary }}/traefik_{{ btraefik_version }}"
-        capability: CAP_NET_BIND_SERVICE+eip
-        state: present
-      become: true
-
     - name: Activate Traefik
       become: yes
       ansible.builtin.file:
@@ -113,6 +106,7 @@
 
 - name: Make sure traefik service is started and enabled
   ansible.builtin.systemd:
+    daemon_reload: yes
     state: "started"
     name: "traefik"
     enabled: yes
