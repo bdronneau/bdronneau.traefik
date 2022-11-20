@@ -1,5 +1,5 @@
 ---
-name: Ansible role
+name: CI
 
 on: [push, pull_request]
 
