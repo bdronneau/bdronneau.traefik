@@ -11,6 +11,8 @@
   [certificatesResolvers.default.acme]
     email = "{{ btraefik_acme_email }}"
     storage = "/etc/traefik/acme/acme.json"
+    # let's encrypt staging for testing
+    # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 
     [certificatesResolvers.default.acme.dnsChallenge]
       provider = "cloudflare"

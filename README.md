@@ -13,3 +13,5 @@ Using vagrant for testing because in docker we do not have systemd (natively)
 ```shell script
 molecule test
 ```
+
+__Note__: Uncomment staging let's encrypt url in traefik configuration when testing
