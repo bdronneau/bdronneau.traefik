@@ -2,7 +2,7 @@
 
 # bdronneau.traefik
 
-Ansible role to deploy and manage [traefik[(https://traefik.io/)].
+Ansible role to deploy and manage [traefik](https://traefik.io/).
 
 ## Dev
 
