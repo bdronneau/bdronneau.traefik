@@ -105,6 +105,7 @@
     - restart traefik systemd unit
 
 - name: Make sure traefik service is started and enabled
+  become: true
   ansible.builtin.systemd:
     daemon_reload: yes
     state: "started"
